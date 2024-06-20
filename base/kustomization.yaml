@@ -5,3 +5,5 @@ resources:
   - service-worker.yaml
   - deployment-jupyter.yaml
   - service-jupyter.yaml
+  - service-registry.yaml
+  - deployment-registry.yaml
