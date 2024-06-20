@@ -1,0 +1,7 @@
+resources:
+  - deployment-scheduler.yaml
+  - service-scheduler.yaml
+  - deployment-worker.yaml
+  - service-worker.yaml
+  - deployment-jupyter.yaml
+  - service-jupyter.yaml

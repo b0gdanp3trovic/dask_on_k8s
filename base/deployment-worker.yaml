@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dask-worker
+  labels:
+    app: dask-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dask-worker
+  template:
+    metadata:
+      labels:
+        app: dask-worker
+    spec:
+      containers:
+      - name: dask-worker
+        image: daskdev/dask:latest
+        args: ["dask-worker", "dask-scheduler:8786"]
+        ports:
+        - containerPort: 8786

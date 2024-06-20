@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dask-jupyter
+  labels:
+    app: dask-jupyter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dask-jupyter
+  template:
+    metadata:
+      labels:
+        app: dask-jupyter
+    spec:
+      containers:
+      - name: dask-jupyter
+        image: daskdev/dask:latest
+        args: ["jupyter", "notebook", "--ip", "0.0.0.0", "--port", "8888", "--no-browser", "--allow-root"]
+        ports:
+        - containerPort: 8888
+        volumeMounts:
+        - name: dask-jupyter-volume
+          mountPath: /home/jovyan/work
+      volumes:
+      - name: dask-jupyter-volume
+        emptyDir: {}
