@@ -1,6 +1,8 @@
-FROM daskdev/dask:2022.10.0
+FROM jupyter/minimal-notebook:latest
 
-RUN conda install -c conda-forge jupyter
+RUN conda install -c conda-forge mamba -y && \
+    mamba install -c conda-forge dask distributed -y && \
+    conda clean --all -f -y
 
 WORKDIR /home/jovyan/work
 
