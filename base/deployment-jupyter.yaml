@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - name: dask-jupyter
-        image: daskdev/dask:latest
-        args: ["jupyter", "notebook", "--ip", "0.0.0.0", "--port", "8888", "--no-browser", "--allow-root"]
+        image: kind-registry:5000/dask-jupyter:latest
         ports:
         - containerPort: 8888
         volumeMounts:
         - name: dask-jupyter-volume
           mountPath: /home/jovyan/work
+        imagePullPolicy: Always
       volumes:
       - name: dask-jupyter-volume
         emptyDir: {}

@@ -1,7 +1,9 @@
 FROM jupyter/minimal-notebook:latest
 
+USER root
+
 RUN conda install -c conda-forge mamba -y && \
-    mamba install -c conda-forge dask distributed -y && \
+    mamba install -c conda-forge jupyterlab -y && \
     conda clean --all -f -y
 
 WORKDIR /home/jovyan/work
